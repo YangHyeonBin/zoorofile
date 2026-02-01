@@ -1,6 +1,6 @@
 {
   "name": "zoorofile",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "🐾 Cute animal-themed GitHub profile README generator",
   "main": "scripts/generate-zoorofile-readme.js",
   "scripts": {
