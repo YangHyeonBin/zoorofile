@@ -4,7 +4,7 @@ const { getTimeGreeting, getMood, getMoodLabel, generateProgressBar, config } = 
 const { getLanguageStats, getUserStats } = require('./get-github-stats');
 const { getWeeklyContributions } = require('./get-commit-activity');
 const { getSpotifyStatus } = require('./get-spotify-status');
-const {checkVersion} = require('./check-version');
+const { checkVersion } = require('./check-version');
 
 const USERNAME = process.env.ZOOROFILE_USERNAME || config.github_username;
 const ANIMAL = config.animal || 'raccoon';
