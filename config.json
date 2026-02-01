@@ -1,6 +1,7 @@
 {
   "animal": "raccoon",
   "github_username": "YOUR_GITHUB_USERNAME",
+  "spotify_track_id": "원하는 곡 track id",
   "timezone": "Asia/Seoul",
   "language": "ko",
   "features": {

@@ -1,16 +1,16 @@
 const axios = require('axios');
+const config = require('../config.json');
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN;
 
 /**
- * Refresh Token으로 새 Access Token 교환
+ * Client Credentials로 Access Token 조회
+ * 사용자 권한 불필요 — CLIENT_ID + CLIENT_SECRET만으로 됨
  */
 async function getAccessToken() {
   const params = new URLSearchParams();
-  params.append('grant_type', 'refresh_token');
-  params.append('refresh_token', REFRESH_TOKEN);
+  params.append('grant_type', 'client_credentials');
 
   const { data } = await axios.post(
     'https://accounts.spotify.com/api/token',
@@ -27,42 +27,19 @@ async function getAccessToken() {
 }
 
 /**
- * 최근에 듣은 음악 조회 (현재 재생 중이지 않을 때 대체용)
- */
-async function getRecentlyPlayed(token) {
-  try {
-    const { data } = await axios.get(
-      'https://api.spotify.com/v1/me/player/recently-played?limit=1',
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-
-    if (data?.items?.length > 0) {
-      const track = data.items[0].track;
-      return {
-        isPlaying: false,
-        title: track.name,
-        artist: track.artists.map((a) => a.name).join(', '),
-        albumArt:
-          track.album.images.find((i) => i.width === 300)?.url ||
-          track.album.images[0]?.url,
-        url: track.external_urls.spotify,
-      };
-    }
-  } catch (e) {
-    console.warn('⚠️  최근 듣은 음악 조회 실패:', e.message);
-  }
-
-  return null;
-}
-
-/**
- * 현재 재생 중인 음악 조회
- * 재생 중이지 않으면 최근에 듣은 음악으로 대체
+ * config.json의 spotify_track_id 값으로 곡 검색
+ * 곡 제목, 아티스트, 앨범 아트, Spotify 링크 반환
  * Spotify가 설정되지 않은 경우 null 반환
  */
 async function getSpotifyStatus() {
-  if (!CLIENT_ID || !CLIENT_SECRET || !REFRESH_TOKEN) {
+  if (!CLIENT_ID || !CLIENT_SECRET) {
     console.log('ℹ️  Spotify 설정되지 않음 — 건너뜀');
+    return null;
+  }
+
+  const trackId = config.spotify_track_id;
+  if (!trackId) {
+    console.log('ℹ️  config.json에 spotify_track_id가 없음 — 건너뜀');
     return null;
   }
 
@@ -70,34 +47,32 @@ async function getSpotifyStatus() {
   try {
     token = await getAccessToken();
   } catch (e) {
-    console.warn('⚠️  Spotify 토큰 갱신 실패:', e.message);
+    console.warn('⚠️  Spotify 토큰 조회 실패:', e.message);
     return null;
   }
 
   try {
-    const { status, data } = await axios.get(
-      'https://api.spotify.com/v1/me/player/currently-playing',
+    const { data } = await axios.get(
+      `https://api.spotify.com/v1/tracks/${config.spotify_track_id}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
-    // 204 = 재생 중인 음악 없음
-    if (status === 204 || !data?.item) {
-      return await getRecentlyPlayed(token);
+    if (!data) {
+      console.warn('⚠️  Track ID로 곡을 찾을 수 없음');
+      return null;
     }
 
-    const track = data.item;
     return {
-      isPlaying: true,
-      title: track.name,
-      artist: track.artists.map((a) => a.name).join(', '),
+      title: data.name,
+      artist: data.artists.map((a) => a.name).join(', '),
       albumArt:
-        track.album.images.find((i) => i.width === 300)?.url ||
-        track.album.images[0]?.url,
-      url: track.external_urls.spotify,
+        data.album.images.find((i) => i.width === 300)?.url ||
+        data.album.images[0]?.url,
+      url: data.external_urls.spotify,
     };
   } catch (e) {
-    console.warn('⚠️  현재 재생 음악 조회 실패:', e.message);
-    return await getRecentlyPlayed(token);
+    console.warn('⚠️  Spotify 곡 조회 실패:', e.message);
+    return null;
   }
 }
 
