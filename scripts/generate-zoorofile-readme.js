@@ -4,6 +4,7 @@ const { getTimeGreeting, getMood, getMoodLabel, generateProgressBar, config } = 
 const { getLanguageStats, getUserStats } = require('./get-github-stats');
 const { getWeeklyContributions } = require('./get-commit-activity');
 const { getSpotifyStatus } = require('./get-spotify-status');
+const {checkVersion} = require('./check-version');
 
 const USERNAME = process.env.ZOOROFILE_USERNAME || config.github_username;
 const ANIMAL = config.animal || 'raccoon';
@@ -78,6 +79,9 @@ function generateStatsSection(stats) {
 
 async function main() {
   console.log('🐾 Zoorofile - README 생성 시작...\n');
+
+  // 0. 버전 확인
+  await checkVersion();
 
   // 1. 데이터 수집
   console.log('📡 데이터 가져오기...');

@@ -64,6 +64,7 @@ npm install
 
 ```json
 {
+  "zoorofile_version": "v0.0.0",
   "animal": "raccoon",
   "github_username": "YOUR_USERNAME",
   "timezone": "Asia/Seoul",
@@ -87,6 +88,7 @@ npm install
 
 | 키 | 설명 |
 |:---|:---|
+| `zoorofile_version` | 현재 사용 중인 Zoorofile 버전 (업데이트 시 자동 경고) |
 | `animal` | 사용할 동물 캐릭터 키 (아래 표 참고) |
 | `github_username` | 본인의 GitHub username |
 | `language` | 언어 (`ko` 또는 `en`) |
