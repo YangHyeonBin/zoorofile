@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    
+    <!-- 작은 꼬리 -->
+    <circle cx="148" cy="158" r="6" fill="#E8C9A0"/>
+    <!-- 몸 (둥글고 통통한) -->
+    <ellipse cx="100" cy="152" rx="48" ry="42" fill="#D4A574"/>
+    <!-- 배 -->
+    <ellipse cx="100" cy="158" rx="30" ry="28" fill="#F5DEB3"/>
+    <!-- 팔 (작은) -->
+    <ellipse cx="66" cy="150" rx="9" ry="16" fill="#DEB887" transform="rotate(-8 66 150)"/>
+    <ellipse cx="134" cy="150" rx="9" ry="16" fill="#DEB887" transform="rotate(8 134 150)"/>
+    <!-- 귀 (둥근, 머리 뒤로) -->
+    <circle cx="72" cy="55" r="14" fill="#D4A574"/>
+    <circle cx="128" cy="55" r="14" fill="#D4A574"/>
+    <circle cx="72" cy="55" r="8" fill="#FCA5A5"/>
+    <circle cx="128" cy="55" r="8" fill="#FCA5A5"/>
+    <!-- 머리 -->
+    <circle cx="100" cy="88" r="40" fill="#DEB887"/>
+    <!-- 볼주머니 (통통하게 돌출) -->
+    <circle cx="70" cy="100" r="19" fill="#F5DEB3"/>
+    <circle cx="130" cy="100" r="19" fill="#F5DEB3"/>
+    <!-- 볼 핑크 -->
+    <circle cx="70" cy="104" r="9" fill="#FCA5A5" opacity="0.55"/>
+    <circle cx="130" cy="104" r="9" fill="#FCA5A5" opacity="0.55"/>
+    <!-- 눈 -->
+    
+    <circle cx="82" cy="85" r="7.5" fill="white"/>
+    <circle cx="118" cy="85" r="7.5" fill="white"/>
+    <circle cx="82.5" cy="84.5" r="4.5" fill="#1F2937"/>
+    <circle cx="118.5" cy="84.5" r="4.5" fill="#1F2937"/>
+    <circle cx="84" cy="82.5" r="1.8" fill="white"/>
+    <circle cx="120" cy="82.5" r="1.8" fill="white"/>
+    <!-- 코 (핑크) -->
+    <ellipse cx="100" cy="96" rx="3" ry="2.5" fill="#EC4899"/>
+    <!-- 입 -->
+    <path d="M 96 101 Q 100 105 104 101" stroke="#374151" fill="none" stroke-width="2" stroke-linecap="round"/>
+    <!-- ZZZ -->
+    
+  </svg>

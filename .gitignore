@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# macOS
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Build output
+dist/
+build/
+
+# Cache
+.cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Test coverage
+coverage/

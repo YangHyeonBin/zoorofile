@@ -1,0 +1,17 @@
+{
+  "animal": "raccoon",
+  "github_username": "YOUR_GITHUB_USERNAME",
+  "timezone": "Asia/Seoul",
+  "language": "ko",
+  "features": {
+    "github_stats": true,
+    "spotify": true,
+    "time_greeting": true,
+    "commit_mood": true
+  },
+  "commit_thresholds": {
+    "sleeping": 10,
+    "relaxed": 30,
+    "active": 60
+  }
+}

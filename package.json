@@ -1,0 +1,14 @@
+{
+  "name": "zoorofile",
+  "version": "1.0.0",
+  "description": "🐾 Cute animal-themed GitHub profile README generator",
+  "main": "scripts/generate-readme.js",
+  "scripts": {
+    "start": "node scripts/generate-readme.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "keywords": ["github", "profile", "readme", "animal", "cute", "zoorofile"],
+  "license": "MIT"
+}

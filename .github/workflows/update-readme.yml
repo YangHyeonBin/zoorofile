@@ -1,0 +1,46 @@
+name: 🐾 Zoorofile - Update README
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Generate README
+        run: node scripts/generate-readme.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+
+      - name: Commit & Push
+        run: |
+          git add -A
+          git config user.email "zoorofile[bot]@github.com"
+          git config user.name "Zoorofile Bot"
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🐾 Zoorofile update - $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
