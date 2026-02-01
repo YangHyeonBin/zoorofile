@@ -1,0 +1,8 @@
+{
+    "scripts": {
+      "start": "node scripts/generate-zoorofile-readme.js"
+    },
+    "dependencies": {
+      "axios": "^1.6.0"
+    }
+  }

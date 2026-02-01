@@ -32,8 +32,9 @@ git clone https://github.com/YOUR_USERNAME/YOUR_USERNAME.git profile
 cp -r zoorofile/.github     profile/
 cp -r zoorofile/scripts     profile/
 cp -r zoorofile/assets      profile/
+cp    zoorofile/.gitignore   profile/
 cp    zoorofile/config.json  profile/
-cp    zoorofile/package.json profile/
+cp    zoorofile/package.user.json    profile/package.json
 cp    zoorofile/SETUP.md     profile/
 
 cd profile
@@ -166,7 +167,7 @@ https://open.spotify.com/track/37i8dQZtR8X5uRGDmB5jOK
 npm install
 
 # 환경변수를 직접 설정하여 테스트
-GITHUB_TOKEN=your_token ZOOROFILE_USERNAME=your_username node scripts/generate-readme.js
+GITHUB_TOKEN=your_token ZOOROFILE_USERNAME=your_username node scripts/generate-zoorofile-readme.js
 ```
 
 생성된 `README.md`와 `assets/{animal}_{mood}.png`를 확인하세요.

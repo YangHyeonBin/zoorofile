@@ -25,7 +25,7 @@ jobs:
         run: npm ci
 
       - name: Generate README
-        run: node scripts/generate-readme.js
+        run: node scripts/generate-zoorofile-readme.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ZOOROFILE_USERNAME: ${{ secrets.ZOOROFILE_USERNAME }}
