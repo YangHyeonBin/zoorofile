@@ -21,9 +21,26 @@ GitHub에서 **본인의 username과 동일한 이름의 public repository**를 
 
 Zoorofile의 파일들을 본인의 profile repository에 복사합니다.
 
+### 폴더 구조
+
+두 레포를 **같은 폴더** 안에 클론합니다:
+
+```
+any-folder/           ← 여기서 명령어 실행 (예: ~/development)
+├── zoorofile/        ← Zoorofile 템플릿
+└── profile/          ← 본인의 프로필 레포
+```
+
+> 💡 이미 사용하는 작업 폴더(예: `~/development`, `~/projects`)가 있다면 그곳을 사용하세요.
+
+### 명령어
+
 ```bash
+# 작업 폴더로 이동 (본인의 작업 폴더 경로 사용)
+cd ~/development
+
 # Zoorofile 클론
-git clone https://github.com/YangHyeonBin/zoorofile.git zoorofile
+git clone https://github.com/YangHyeonBin/zoorofile.git
 
 # 본인의 profile repo 클론
 git clone https://github.com/YOUR_USERNAME/YOUR_USERNAME.git profile
