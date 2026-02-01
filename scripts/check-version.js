@@ -21,7 +21,7 @@ async function getLatestVersion() {
  */
 async function checkVersion() {
   const currentVersion = config.zoorofile_version;
-  if (!currentVersion) {
+  if (!currentVersion || currentVersion === 'v0.0.0') {
     console.log('ℹ️  zoorofile_version 미설정 — 버전 체크 건너뜀');
     return;
   }
