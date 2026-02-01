@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const animals = require('./animals');
 const { getTimeGreeting, getMood, getMoodLabel, generateProgressBar, config } = require('./utils');
 const { getLanguageStats, getUserStats } = require('./get-github-stats');
 const { getWeeklyContributions } = require('./get-commit-activity');
@@ -127,19 +126,16 @@ async function main() {
   console.log(`🕐 인사말: ${greeting.message}`);
   console.log(`🐾 동물: ${ANIMAL}\n`);
 
-  // 3. 동물 SVG 생성 및 저장
-  const animalFn = animals[ANIMAL];
-  if (!animalFn) {
-    console.error(`❌ 알 수 없는 동물: "${ANIMAL}"`);
-    console.error(`   사용 가능한 동물: ${Object.keys(animals).join(', ')}`);
+  // 3. 동물 이미지 경로 설정
+  const animalImage = `assets/${ANIMAL}_${mood}.png`;
+  const animalImagePath = path.resolve(__dirname, `../${animalImage}`);
+
+  if (!fs.existsSync(animalImagePath)) {
+    console.error(`❌ 동물 이미지를 찾을 수 없습니다: "${animalImage}"`);
+    console.error(`   assets/ 폴더에 파일이 있는지 확인해주세요.`);
     process.exit(1);
   }
-
-  const svgContent = animalFn(mood);
-  const svgPath = path.resolve(__dirname, '../assets/current-animal.svg');
-  fs.mkdirSync(path.dirname(svgPath), { recursive: true });
-  fs.writeFileSync(svgPath, svgContent);
-  console.log('✅ 동물 SVG 저장 완료');
+  console.log(`✅ 동물 이미지: ${animalImage}`);
 
   // 4. README 구성
   let readme = `<!-- ZOOROFILE_START -->
@@ -150,7 +146,7 @@ async function main() {
 
 ## ${greeting.message}
 
-<img src="assets/current-animal.svg" alt="My Zoorofile Pet" width="150" />
+<img src="${animalImage}" alt="My Zoorofile Pet" width="150" />
 
 ### 💻 ${USERNAME}
 ${moodLabel}
