@@ -6,15 +6,11 @@ const API_URL  = 'https://api.github.com/repos/YangHyeonBin/zoorofile/releases/l
 
 /**
  * GitHub releases에서 최신 버전 조회
- * GITHUB_TOKEN 있으면 인증 요청으로 속도 제한 완화
+ * zoorofile은 public 레포이므로 인증 불필요
+ * 사용자 레포의 GITHUB_TOKEN을 외부 레포 API에 전달하지 않음
  */
 async function getLatestVersion() {
-  const headers = {};
-  if (process.env.GITHUB_TOKEN) {
-    headers['Authorization'] = `token ${process.env.GITHUB_TOKEN}`;
-  }
-
-  const { data } = await axios.get(API_URL, { headers });
+  const { data } = await axios.get(API_URL);
   return data.tag_name; // 예: "v1.0.0"
 }
 
