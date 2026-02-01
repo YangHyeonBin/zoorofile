@@ -120,6 +120,45 @@ Profile repository의 **Settings → Secrets and variables → Actions**에서 �
 
 > ℹ️ `GITHUB_TOKEN`은 GitHub Actions에서 **자동 제공**됩니다. 직접 설정할 필요 없습니다.
 
+### 선택: Private 레포 contribution 포함
+
+기본적으로 **public 레포의 contribution만** 집계됩니다. Private 레포까지 포함하려면 Personal Access Token(PAT)을 생성해야 합니다.
+
+#### 1. PAT 생성
+
+1. GitHub → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens**
+2. **Generate new token** 클릭
+3. 설정:
+   - **Token name**: `zoorofile` (자유롭게 설정)
+   - **Expiration**: 원하는 기간 선택
+   - **Repository access**: **All repositories** 선택
+   - **Permissions** → **Repository permissions**:
+     - `Contents`: **Read-only**
+     - `Metadata`: **Read-only** (기본 선택됨)
+4. **Generate token** 클릭 후 토큰 복사
+
+#### 2. Secret 등록
+
+Profile repository의 **Settings → Secrets and variables → Actions**에서:
+
+| Secret 이름 | 값 |
+|:---|:---|
+| `GH_PAT` | 위에서 복사한 PAT |
+
+#### 3. 워크플로우 수정
+
+`.github/workflows/update-readme.yml` 파일에서 `GITHUB_TOKEN`을 `GH_PAT`로 변경:
+
+```yaml
+- name: Generate README
+  run: node scripts/generate-zoorofile-readme.js
+  env:
+    GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # 변경
+    ZOOROFILE_USERNAME: ${{ secrets.ZOOROFILE_USERNAME }}
+```
+
+> 💡 PAT 없이도 동작하지만, private 레포 contribution은 집계되지 않습니다.
+
 ### Spotify Secrets (현재 사용 불가)
 
 > ⚠️ **Spotify Developer 앱 등록이 현재 일시 중단**되어 있어 신규 사용자는 Spotify 기능을 사용할 수 없습니다. 추후 재개되면 이 문서를 업데이트할 예정입니다.
