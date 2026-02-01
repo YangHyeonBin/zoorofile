@@ -8,6 +8,9 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+    concurrency:
+      group: update-readme
+      cancel-in-progress: false  # 진행 중인 것을 취소하지 않고 대기
 
     steps:
       - name: Checkout Repository
@@ -41,5 +44,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "🐾 Zoorofile update - $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase
             git push
           fi
