@@ -18,20 +18,20 @@ function getTimeGreeting() {
 
   const greetings = {
     ko: [
-      { start: 0,  end: 4,  message: '🌜 야행성 모드...',      emoji: '🌜' },
-      { start: 4,  end: 6,  message: '🌅 새벽의 코더...',     emoji: '🌅' },
-      { start: 6,  end: 12, message: '☀️ 좋은 아침!',         emoji: '☀️' },
-      { start: 12, end: 18, message: '🌤️ 좋은 오후!',         emoji: '🌤️' },
-      { start: 18, end: 22, message: '🌙 좋은 저녁!',         emoji: '🌙' },
-      { start: 22, end: 24, message: '🌜 야행성 모드...',      emoji: '🌜' },
+      { start: 0,  end: 4,  message: '🌜 이 밤에 방문이라니!',    emoji: '🌜' },
+      { start: 4,  end: 6,  message: '🌅 일찍 오셨네요!',        emoji: '🌅' },
+      { start: 6,  end: 12, message: '☀️ 좋은 아침이에요',        emoji: '☀️' },
+      { start: 12, end: 18, message: '🌤️ 좋은 오후예요',          emoji: '🌤️' },
+      { start: 18, end: 22, message: '🌙 좋은 저녁이에요',        emoji: '🌙' },
+      { start: 22, end: 24, message: '🌜 이 밤에 방문이라니!',    emoji: '🌜' },
     ],
     en: [
-      { start: 0,  end: 4,  message: '🌜 Night owl mode...', emoji: '🌜' },
-      { start: 4,  end: 6,  message: '🌅 Early bird coder...', emoji: '🌅' },
-      { start: 6,  end: 12, message: '☀️ Good morning!',     emoji: '☀️' },
-      { start: 12, end: 18, message: '🌤️ Good afternoon!',   emoji: '🌤️' },
-      { start: 18, end: 22, message: '🌙 Good evening!',     emoji: '🌙' },
-      { start: 22, end: 24, message: '🌜 Night owl mode...', emoji: '🌜' },
+      { start: 0,  end: 4,  message: '🌜 A visitor at this hour!', emoji: '🌜' },
+      { start: 4,  end: 6,  message: '🌅 You\'re up early!',       emoji: '🌅' },
+      { start: 6,  end: 12, message: '☀️ Good morning!',           emoji: '☀️' },
+      { start: 12, end: 18, message: '🌤️ Good afternoon!',         emoji: '🌤️' },
+      { start: 18, end: 22, message: '🌙 Good evening!',           emoji: '🌙' },
+      { start: 22, end: 24, message: '🌜 A visitor at this hour!', emoji: '🌜' },
     ],
   };
 
