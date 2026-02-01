@@ -31,6 +31,7 @@ git clone https://github.com/YOUR_USERNAME/YOUR_USERNAME.git profile
 # 파일 복사 (README.md 제외)
 cp -r zoorofile/.github     profile/
 cp -r zoorofile/scripts     profile/
+cp -r zoorofile/assets      profile/
 cp    zoorofile/config.json  profile/
 cp    zoorofile/package.json profile/
 cp    zoorofile/SETUP.md     profile/
@@ -78,6 +79,9 @@ npm install
 
 ### 🐾 사용 가능한 동물
 
+**현재 지원하는 동물: 너구리, 여우**
+**고양이, 오리, 햄스터는 이미지 생성 후 추가 예정!**
+
 | 동물 | `animal` 키 | 특징 |
 |:---:|:---:|:---|
 | 🦝 너구리 | `raccoon` | 호기심 많고 똑똑한 느낌 |
@@ -95,7 +99,7 @@ Profile repository의 **Settings → Secrets and variables → Actions**에서 �
 
 | Secret 이름 | 값 |
 |:---|:---|
-| `GITHUB_USERNAME` | 본인의 GitHub username |
+| `ZOOROFILE_USERNAME` | 본인의 GitHub username |
 
 > ℹ️ `GITHUB_TOKEN`은 GitHub Actions에서 **자동 제공**됩니다. 직접 설정할 필요 없습니다.
 
@@ -162,7 +166,7 @@ https://open.spotify.com/track/37i8dQZtR8X5uRGDmB5jOK
 npm install
 
 # 환경변수를 직접 설정하여 테스트
-GITHUB_TOKEN=your_token GITHUB_USERNAME=your_username node scripts/generate-readme.js
+GITHUB_TOKEN=your_token ZOOROFILE_USERNAME=your_username node scripts/generate-readme.js
 ```
 
 생성된 `README.md`와 `assets/{animal}_{mood}.png`를 확인하세요.

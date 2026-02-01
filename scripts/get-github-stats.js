@@ -2,7 +2,7 @@ const axios = require('axios');
 const config = require('../config.json');
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const USERNAME = process.env.GITHUB_USERNAME || config.github_username;
+const USERNAME = process.env.ZOOROFILE_USERNAME || config.github_username;
 
 const headers = {
   Authorization: `token ${GITHUB_TOKEN}`,

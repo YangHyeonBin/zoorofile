@@ -5,7 +5,7 @@ const { getLanguageStats, getUserStats } = require('./get-github-stats');
 const { getWeeklyContributions } = require('./get-commit-activity');
 const { getSpotifyStatus } = require('./get-spotify-status');
 
-const USERNAME = process.env.GITHUB_USERNAME || config.github_username;
+const USERNAME = process.env.ZOOROFILE_USERNAME || config.github_username;
 const ANIMAL = config.animal || 'raccoon';
 
 // ─── Spotify 섹션 생성 ───────────────────────────────────────────────
