@@ -6,7 +6,7 @@
   "language": "ko",
   "features": {
     "github_stats": true,
-    "spotify": true,
+    "spotify": false,
     "time_greeting": true,
     "commit_mood": true
   },

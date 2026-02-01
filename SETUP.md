@@ -5,7 +5,6 @@
 
 - GitHub 계정
 - Node.js 20 이상 (로컬 테스트용)
-- Spotify 계정 (선택사항)
 
 
 ## 1️⃣ Profile Repository 생성
@@ -71,7 +70,7 @@ npm install
   "language": "ko",
   "features": {
     "github_stats": true,
-    "spotify": true,
+    "spotify": false,
     "time_greeting": true,
     "commit_mood": true
   },
@@ -121,7 +120,9 @@ Profile repository의 **Settings → Secrets and variables → Actions**에서 �
 
 > ℹ️ `GITHUB_TOKEN`은 GitHub Actions에서 **자동 제공**됩니다. 직접 설정할 필요 없습니다.
 
-### Spotify Secrets (선택사항)
+### Spotify Secrets (현재 사용 불가)
+
+> ⚠️ **Spotify Developer 앱 등록이 현재 일시 중단**되어 있어 신규 사용자는 Spotify 기능을 사용할 수 없습니다. 추후 재개되면 이 문서를 업데이트할 예정입니다.
 
 | Secret 이름 | 설명 |
 |:---|:---|
@@ -129,34 +130,7 @@ Profile repository의 **Settings → Secrets and variables → Actions**에서 �
 | `SPOTIFY_CLIENT_SECRET` | Spotify Developer Dashboard에서 복사 |
 
 
-## 5️⃣ Spotify 연동 (선택사항)
-
-### Step 1 — Spotify Developer App 생성
-
-1. [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)로 이동
-2. **Create App** 클릭
-3. App 이름과 설명을 적절히 입력
-4. **Settings → Basic information**에서 `Client ID`와 `Client Secret`를 복사
-5. 복사한 값을 GitHub Secrets에 추가합니다 (4️⃣ 참고)
-
-### Step 2 — Track ID 얻기
-
-프로필에 표시할 음악의 Track ID를 복사합니다.
-
-1. **Spotify 앱**에서 원하는 곡을 열어둡니다
-2. **••• (더보기) → Share → 링크 복사** 클릭
-3. 복사된 URL에서 Track ID를 확인합니다:
-
-```
-https://open.spotify.com/track/37i8dQZtR8X5uRGDmB5jOK
-                               ^^^^^^^^^^^^^^^^^^^^^^
-                               이 부분이 Track ID
-```
-
-4. 복사한 Track ID를 `config.json`의 `spotify_track_id`에 붙어넣습니다
-
-
-## 6️⃣ GitHub Actions 확인
+## 5️⃣ GitHub Actions 확인
 
 1. Profile repository의 **Actions** 탭으로 이동
 2. 첫 실행은 수동으로 트리거할 수 있습니다:
@@ -196,11 +170,8 @@ GITHUB_TOKEN=your_token ZOOROFILE_USERNAME=your_username node scripts/generate-z
 **Q: README가 업데이트되지 않아요**  
 A: GitHub Actions 탭에서 워크플로우 실행 로그를 확인해보세요. 권한 문제일 수 있습니다.
 
-**Q: Spotify 음악이 안 보여요**  
-A: `config.json`의 `spotify_track_id`가 올바르게 설정되었는지 확인해보세요. Spotify 앱에서 링크 복사 후 Track ID만 붙어넣으면 됩니다.
-
-**Q: Spotify 음악을 바꾸려면?**  
-A: `config.json`의 `spotify_track_id` 값만 새 곡의 Track ID로 바꾸면 됩니다!
+**Q: Spotify 기능을 사용할 수 있나요?**
+A: 현재 Spotify Developer 앱 등록이 일시 중단되어 신규 사용자는 사용할 수 없습니다. 기존 앱을 가지고 있다면 `config.json`의 `features.spotify`를 `true`로 바꾸고 Secrets를 설정하면 됩니다.
 
 **Q: 선택한 동물을 바꿀 수 있나요?**  
 A: `config.json`의 `animal` 값만 바꾸면 됩니다!
