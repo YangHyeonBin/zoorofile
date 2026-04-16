@@ -66,10 +66,8 @@ npm install
     "timezone": "Asia/Seoul",
     "language": "ko",
     "features": {
-        "github_stats": true,
-        "spotify": false,
-        "time_greeting": true,
-        "commit_mood": true
+        "weekly_contributions": true,
+        "spotify": false
     },
     "commit_thresholds": {
         "sleeping": 10,
@@ -82,15 +80,16 @@ npm install
 
 ### 설정 항목 설명
 
-| 키                  | 설명                                                  |
-| :------------------ | :---------------------------------------------------- |
-| `zoorofile_version` | 현재 사용 중인 Zoorofile 버전 (업데이트 시 자동 경고) |
-| `animal`            | 사용할 동물 캐릭터 키 (아래 표 참고)                  |
-| `github_username`   | 본인의 GitHub username                                |
-| `language`          | 언어 (`ko` 또는 `en`)                                 |
-| `features`          | 각 기능의 활성화 여부                                 |
-| `commit_thresholds` | 기분 전환 기준 (주당 컨트리뷰션 수)                   |
-| `spotify_track_id`  | Spotify 트랙 ID (아래 참고)                           |
+| 키                              | 설명                                                  |
+| :------------------------------ | :---------------------------------------------------- |
+| `zoorofile_version`             | 현재 사용 중인 Zoorofile 버전 (업데이트 시 자동 경고) |
+| `animal`                        | 사용할 동물 캐릭터 키 (아래 표 참고)                  |
+| `github_username`               | 본인의 GitHub username                                |
+| `language`                      | 언어 (`ko` 또는 `en`)                                 |
+| `features.weekly_contributions` | 이번 주 레포별 기여 섹션 표시 여부 (기본 `true`)      |
+| `features.spotify`              | Spotify 현재 재생 곡 표시 여부 (기본 `false`)         |
+| `commit_thresholds`             | 기분 전환 기준 (주당 컨트리뷰션 수)                   |
+| `spotify_track_id`              | Spotify 트랙 ID (아래 참고)                           |
 
 ### 🐾 사용 가능한 동물
 
@@ -200,7 +199,7 @@ Profile repository의 **Settings → Secrets and variables → Actions**에서:
     - **Run workflow** → **Run workflow** 클릭
 3. 실행 완료 후 프로필 페이지를 확인합니다!
 
-> 🔄 이후로는 **매시간 자동으로** 실행되어 README가 업데이트됩니다.
+> 🔄 이후로는 **매일 자정(UTC)에 자동으로** 실행되어 README가 업데이트됩니다.
 
 ## 🎭 커밋 활동별 동물 표정
 

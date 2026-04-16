@@ -6,10 +6,8 @@
   "timezone": "Asia/Seoul",
   "language": "ko",
   "features": {
-    "github_stats": true,
-    "spotify": false,
-    "time_greeting": true,
-    "commit_mood": true
+    "weekly_contributions": true,
+    "spotify": false
   },
   "commit_thresholds": {
     "sleeping": 10,
